@@ -14,8 +14,8 @@ socket.on('connect',()=>{
 socket.on('newMsg',function(msg){
     console.log('new msg :',msg);
     //enable to send email to server
-socket.emit('createMsg',{
+/*socket.emit('createMsg',{
     from:'swty',
     text:'good morning..!!'
-})
+})*/
 });

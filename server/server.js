@@ -12,16 +12,22 @@ app.use(express.static(publicpath));
 //to register new connection event listener 
 io.on('connection',(socket)=>{
     console.log('new connection');
-socket.emit('newMsg',{
+/*socket.emit('newMsg',{
     from:'server',
     text:'gm',
     createdAt:123
     //send data to user
-});
+});*/
     socket.on('createMsg',function(msg){
         console.log(msg);
+        io.emit('newMsg',{
+            fom:msg.from,
+            text:msg.text,
+            createAt:new Date().getTime()
+            //Broadcast to all user connected to server.
+        });
         //receive email from user
-    })
+    });
     socket.on('disconnect',()=>{
         console.log('Disconnected');
         //user disconnected from server
